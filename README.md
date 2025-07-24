@@ -34,15 +34,16 @@ git clone [https://github.com/Ronaldop19/wallet-challange.git](https://github.co
 ```bash
 cd wallet-challange
 ```
+---
+### 2. Iniciar o Kafka com Docker Compose
 
-2. Iniciar o Kafka com Docker Compose
 Este projeto utiliza o Kafka para processamento de mensagens. Certifique-se de ter o Docker e o Docker Compose instalados. No diretório raiz do projeto, execute:
 ```bash
 docker-compose up -d
 ```
 ### Este comando irá iniciar os serviços do Kafka (e suas dependências, como o ZooKeeper) em segundo plano. ###
-
-3. Executar a Aplicação Spring Boot
+---
+### 3. Executar a Aplicação Spring Boot
 Após o Kafka estar em execução, você pode iniciar a aplicação Spring Boot. Certifique-se de ter o Java (JDK 21 ou superior, geralmente) instalado.
 
 Você pode executar a aplicação através de sua IDE (IntelliJ IDEA, Eclipse, VS Code) ou via linha de comando (se for um projeto Maven ou Gradle):
@@ -54,45 +55,17 @@ mvn spring-boot:run
 # Se for um projeto Gradle:
 ./gradlew bootRun
 ```
+---
+### 4. Acessar a Aplicação
+Uma vez que a aplicação Spring Boot esteja rodando, você poderá acessá-la no seu navegador ou via ferramenta de API (como Postman/Insomnia) através do endereço: http://localhost:8080
 
-4. Acessar a Aplicação
-Uma vez que a aplicação Spring Boot esteja rodando, você poderá acessá-la no seu navegador ou via ferramenta de API (como Postman/Insomnia) através do endereço:
+---
 
-http://localhost:8080
+## 📞 Endpoints da API
 
-
-📞 Endpoints da API
-A aplicação expõe os seguintes endpoints para gerenciamento de transações:
-1. Criar uma Nova Transação (POST /transaction)
-Este endpoint permite criar uma nova transação financeira entre dois usuários.
-
-Método: POST
-
-URL: http://localhost:8080/transaction
-
-Corpo da Requisição (JSON):
-Envie um objeto JSON com os campos value, payer (ID do usuário que está pagando) e payee (ID do usuário que está recebendo).
-
-```bash
-{
-    "value": 100.0,
-    "payer": 1,
-    "payee": 2
-}
-```
-
-2. Listar Todas as Transações (GET /transaction)
-Este endpoint retorna uma lista de todas as transações registradas no sistema.
-
-Método: GET
-
-URL: http://localhost:8080/transaction
-Entendido! Para complementar seu README.md, vamos adicionar uma seção sobre como interagir com a API, incluindo exemplos de requisições e respostas.
-
-📞 Endpoints da API
 A aplicação expõe os seguintes endpoints para gerenciamento de transações:
 
-1. Criar uma Nova Transação (POST /transaction)
+### 1. Criar uma Nova Transação (POST /transaction)
 Este endpoint permite criar uma nova transação financeira entre dois usuários.
 
 Método: POST
@@ -140,7 +113,7 @@ Transaction not authorized - Reason: Service returned 403 Forbidden: Transaction
 ```bash
 Invalid transaction: Transaction[id=null, payer=1, payee=2, value=10000.00, createdAt=null]
 ```
-
+---
 2. Listar Todas as Transações (GET /transaction)
 Este endpoint retorna uma lista de todas as transações registradas no sistema.
 
@@ -170,7 +143,7 @@ URL: http://localhost:8080/transaction
 ```
 A resposta é um array de objetos, onde cada objeto representa uma transação com os mesmos campos descritos acima.
 
-
+---
 📝 Observações:
 Certifique-se de que a porta 8080 não esteja sendo utilizada por outra aplicação.
 
