@@ -1,6 +1,6 @@
 # Wallet Challenge Backend
 
-Este projeto consiste em uma aplicação backend desenvolvida para o desafio "Wallet Challenge", implementando funcionalidades essenciais de uma carteira digital.
+Este projeto consiste em uma aplicação backend desenvolvida tendo como base o [Desafio Back-end PicPay](https://github.com/PicPay/picpay-desafio-backend?tab=readme-ov-file), para fins de estudos, implementando funcionalidades essenciais de uma carteira digital.
 
 ---
 
