@@ -1,7 +1,11 @@
 package br.com.ronaldoamorim.wallet_challenge.transaction;
 
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.ronaldoamorim.wallet_challenge.Authorization.AuthorizationService;
@@ -53,8 +57,27 @@ public class TransactionService {
                     .orElseThrow(() -> new TransactionException("Invalid transaction: " + transaction));
     }
 
-    public List<Transaction> list() {
-    return transactionRepository.findAll();
+    public Map<String, Object> list(int page, int size, String sortBy, String sortDirection) {
+        // page: número da página (começa em 0)
+        // size: quantidade de itens por página
+        // sortBy: campo para ordenar (ex: "createdAt", "value")
+        // sortDirection: "asc" para ascendente, "desc" para descendente
+
+        Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        List<Transaction> transactions = transactionRepository.findAllBy(pageable); 
+
+        long totalTransactions = transactionRepository.count();
+        long totalPages = (long) Math.ceil((double) totalTransactions / size);
+
+        return Map.of(
+            "content", transactions,
+            "page", page,
+            "size", size,
+            "totalElements", totalTransactions,
+            "totalPages", totalPages
+        );
     }
 }
  
