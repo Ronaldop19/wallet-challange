@@ -65,7 +65,7 @@ Uma vez que a aplicação Spring Boot esteja rodando, você poderá acessá-la n
 
 A aplicação expõe os seguintes endpoints para gerenciamento de transações:
 
-### 1. Criar uma Nova Transação (POST /transaction)
+### - Criar uma Nova Transação (POST /transaction)
 Este endpoint permite criar uma nova transação financeira entre dois usuários.
 
 Método: POST
@@ -114,7 +114,7 @@ Transaction not authorized - Reason: Service returned 403 Forbidden: Transaction
 Invalid transaction: Transaction[id=null, payer=1, payee=2, value=10000.00, createdAt=null]
 ```
 ---
-2. Listar Todas as Transações (GET /transaction)
+### - Listar Todas as Transações (GET /transaction)
 Este endpoint retorna uma lista de todas as transações registradas no sistema.
 
 Método: GET
